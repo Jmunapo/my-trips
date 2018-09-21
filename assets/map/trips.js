@@ -25,25 +25,18 @@ async function init() {
         Marker = google.maps.Marker,
         Point = google.maps.Point;
 
-    
-    var pos1 = new LatLng(23.63, -102.55);
-    var pos2 = new LatLng(17.98, -92.92);
-
     var bounds = new LatLngBounds();
-    bounds.extend(pos1);
-    bounds.extend(pos2);
 
     map = new Map(document.getElementById('map-canvas'), {
-        center: bounds.getCenter(),
+        center: {lat: -18, lng: 31},
         zoom: 9
     });
 
-    map.fitBounds(bounds);
     let markers = [];
     firebase.database().ref('trips').once('value').then(snapshot => {
         const points = snapshotToArray(snapshot);
         points.forEach((point, i) => {
-            let point1 = new LatLng(point.p1.x, point.p1.y);
+            let point1 = new LatLng(point.p1.x + 0.005, point.p1.y+0.005);
             let point2 = new LatLng(point.p2.x, point.p2.y);
     
             let pointMarker1 = new Marker({
@@ -51,6 +44,7 @@ async function init() {
                 label: ''+(i+1)+'A',
                 draggable: false,
                 map: map,
+                icon: 'assets/img/airplane.png',
                 title: point.notes
             });
             let pointMarker2 = new Marker({
@@ -58,15 +52,22 @@ async function init() {
                 label: ''+(i+1)+'B',
                 draggable: false,
                 map: map,
+                icon: 'assets/img/flag.png',
                 title: point.notes
             });
+
+            bounds.extend(point1);
+            bounds.extend(point1);
     
             markers.push({
                 marker1: pointMarker1,
                 marker2: pointMarker2,
                 cn: point.cn
             });
-    
+
+            if(points.length === markers.length){
+                map.fitBounds(bounds);
+            }
         });
     })
 
@@ -98,7 +99,7 @@ async function init() {
             var symbol = {
                 path: pathDef,
                 scale: scale,
-                strokeWeight: 2,
+                strokeWeight: 1,
                 fillColor: 'none'
             };
 
@@ -125,3 +126,46 @@ async function init() {
 }
 
 google.maps.event.addDomListener(window, 'load', init);
+
+function printMap(){
+    console.log('Printing');
+        const $body = $('body');
+      const $mapContainer = $('#map-canvas');
+      const $mapContainerParent = $mapContainer.parent();
+      const $printContainer = $('<div class="container-fluid" style="position:relative;">');
+
+      $printContainer
+        .height($mapContainer.height())
+        .append($mapContainer)
+        .prependTo($body);
+
+      const $content = $body
+        .children()
+        .not($printContainer)
+        .not('link')
+        .not('script')
+        .detach();
+    
+        console.log($content);
+
+      /**
+       * Needed for those who use Bootstrap 3.x, because some of
+       * its `@media print` styles ain't play nicely when printing.
+       */
+      const $patchedStyle = $('<style media="print">')
+        .text(`
+          img { max-width: none !important; }
+          a[href]:after { content: ""; }
+          #map-canvas {height: 100%; margin-top: 20px;}
+        `)
+        .appendTo('head');
+
+      window.print();
+
+      $body.prepend($content);
+      $mapContainerParent.prepend($mapContainer);
+
+      $printContainer.remove();
+      $patchedStyle.remove();
+}
+
