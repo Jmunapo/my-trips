@@ -25,8 +25,7 @@ git clone https://github.com/Jmunapo/my-trips.git
 
 ## Acknowledgments
 
-* [Creative TIM](http://www.creative-tim.com/)
 * [JSFiddle User](https://jsfiddle.net/medmunds/sd10up9t/)
+* [Creative TIM](http://www.creative-tim.com/)
 * [Diamond Web Hosting](https://diamond.co.zw)
-* [Joemags - Developer](https://joemags.co.zw)
 
