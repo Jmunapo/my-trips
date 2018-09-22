@@ -6,9 +6,7 @@ Record your trips and print them out on google maps
 
 ## Run Locally
 Download and install [XAMPP](https://www.apachefriends.org/)
-
 `OR`
-
 Use [Web Server](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) Chrome plugin
 
 ## Deployment
