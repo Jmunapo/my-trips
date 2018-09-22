@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Register</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/59f5df8eb2.js"></script>
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="orange">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            <div class="logo">
+                <a href="http://diamond.co.zw" class="simple-text logo-normal">
+                    Diamond
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="login.html">
+                            <i class="now-ui-icons objects_key-25"></i>
+                            <p>Login</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="register.html">
+                            <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                            <p>Register</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="panel-header panel-header-sm">
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-8 m-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="title">Register</h5>
+                                <br>
+                                <div class="alert alert-primary notify d-none">
+                                    
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form id="regForm">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input name="email" type="email" class="form-control" placeholder="john@example.com" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input type="password" class="form-control" placeholder="Confirm Password" oninput="check(this)" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                            <div class="col-md-4 col-sm-12 m-auto">
+                                                <button class="btn btn-secondary btn-block" >
+                                                    Register
+                                                    <i id="register-load" class="fa fa-circle-o-notch fa-spin fa-fw float-right d-none"></i>
+                                                </button>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="https://joemags.co.zw">
+                                    Joemags
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://joemags.co.zw">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://joemags.co.zw">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>, Designed by
+                        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                        <a href="https://joemags.co.zw" target="_blank">Joemags</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+<!-- <script src="assets/plugins/jquery-validation/jquery.validate.js"></script> -->
+
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA7MwwD1Z-dWFSf3c_IxQ_22AjGkJeQT0Q",
+    authDomain: "my-trips-39622.firebaseapp.com",
+    databaseURL: "https://my-trips-39622.firebaseio.com",
+    projectId: "my-trips-39622",
+    storageBucket: "",
+    messagingSenderId: "556327618267"
+  };
+  firebase.initializeApp(config);
+</script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/now-ui-dashboard.js?v=1.0.1"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/demo/demo.js"></script>
+
+<script src="auth/auth.js"></script>
+<script src="auth/auth-state.js"></script>
+
+</html>
