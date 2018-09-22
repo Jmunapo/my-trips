@@ -140,8 +140,7 @@ async function init() {
                     m.x + marker.cn * o.x,
                     m.y + marker.cn * o.y);
 
-            var pathDef = 'M 0,0 ' +
-                'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
+            var pathDef = 'M 0,0 '+'q '+c.x+','+c.y+' '+e.x+','+e.y;
 
             var zoom = map.getZoom(),
                 scale = 1 / (Math.pow(2, -zoom));
@@ -149,8 +148,9 @@ async function init() {
             var symbol = {
                 path: pathDef,
                 scale: scale,
-                strokeWeight: 1,
-                fillColor: 'none'
+                strokeWeight: 1.5,
+                strokeColor: '#0e0e0e',
+                fillColor: 's'
             };
 
             let infowindow = new google.maps.InfoWindow({
