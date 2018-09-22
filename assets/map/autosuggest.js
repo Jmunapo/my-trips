@@ -25,7 +25,6 @@ function initAutocomplete() {
 function addOrigin() {
     // Get the place details from the autocomplete object.
     var place = origin.getPlace();
-    console.log(place);
     var points = getXY(place.geometry);
     trip.p1 = points;
     trip.p1['formatted_address'] = place.formatted_address;
@@ -61,30 +60,16 @@ function geolocate() {
 
 $('#add_trip').submit(e=>{
     e.preventDefault();
-    console.log(trip.p1, trip.p2);
+    $('#trip-load').removeClass('d-none');
     if('x' in trip.p1 && 'x' in trip.p2){
         trip['cn'] = (Math.random()).toFixed(3);
         trip['notes'] = $('#notes').val();
-        var ref = firebase.database().ref("trips");
-        ref.push(trip).then(d=>{
-            console.log(d);
+        var uid = window.user.uid;
+        var ref = firebase.database().ref("trips/"+uid);
+        ref.push(trip).then(()=>{
+            $('#trip-load').addClass('d-none');
             e.target.reset();
+            window.location = 'map.html';
         });
     }
 })
-
-/*$(document).ready(function() {
-    // Javascript method's body can be found in assets/js/demos.js
-    console.log(firebase);
-    var ref = firebase.database().ref("Joe");
-    var defaultDatabase = firebase.database().ref('/');
-    defaultDatabase.set({'Joe':'Joemags'});
-
-    
-    ref.once("value")
-    .then(function(snapshot) {
-        var key = snapshot.key;
-        var val = snapshot.val();
-        console.log(key, val);
-    });
-});*/
