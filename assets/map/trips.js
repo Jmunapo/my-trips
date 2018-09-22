@@ -23,7 +23,33 @@ async function init() {
 
     map = new Map(document.getElementById('map-canvas'), {
         center: {lat: -18, lng: 31},
-        zoom: 9
+        zoom: 9,
+        styles: [
+            {
+              "elementType": "labels",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.land_parcel",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.neighborhood",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            }
+          ]
     });
 
     let markers = [];
@@ -40,14 +66,16 @@ async function init() {
                 position: point1,
                 draggable: false,
                 map: map,
-                icon: 'assets/img/airplane.png'
+                visible: false,
+                //icon: 'assets/img/airplane.png'
             });
 
             let pointMarker2 = new Marker({
                 position: point2,
                 draggable: false,
                 map: map,
-                icon: 'assets/img/flag.png'
+                visible: false,
+                //icon: 'assets/img/destination.png'
             });
 
             bounds.extend(point1);
@@ -65,7 +93,7 @@ async function init() {
             }
 
             let curvv = markerinstance;
-            curvv = (curvv > 0.5)? curvv : 0.5+curvv;
+            curvv = (curvv > 0.3)? curvv : 0.3+curvv;
 
 
     
@@ -133,9 +161,9 @@ async function init() {
             if(!alreadyDrawn[i]){
                 alreadyDrawn[i] = new Marker({
                     position: pos1,
-                    clickable: true,
+                    clickable: false,
                     icon: symbol,
-                    label: marker.title,
+                    //label: marker.title,
                     zIndex: 0, // behind the other markers
                     map: map
                 });
