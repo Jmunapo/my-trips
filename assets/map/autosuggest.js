@@ -69,7 +69,7 @@ $('#add_trip').submit(e=>{
         ref.push(trip).then(()=>{
             $('#trip-load').addClass('d-none');
             e.target.reset();
-            window.location = 'map.html';
+            window.location = 'index.html';
         });
     }
 })
