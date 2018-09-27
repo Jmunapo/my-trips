@@ -144,9 +144,17 @@ async function init() {
 
             var zoom = map.getZoom(),
                 scale = 1 / (Math.pow(2, -zoom));
+            
+            var lineSymbol = {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                };
 
             var symbol = {
                 path: pathDef,
+                icons: [{
+                    icon: lineSymbol,
+                    offset: '50%'
+                    }],
                 scale: scale,
                 strokeWeight: 1.5,
                 strokeColor: '#0e0e0e',
